@@ -51,8 +51,13 @@ const pinkPrice = .55
 
 // CODE HERE
 
+let totalAcres = 0 // The total number of acres than was harvested in the week
 
+for (i = 0; i < 7; i++){ // This for loop iterates through each day of the week, that is why the conditional is set to i < 7, since there are 7 days in a week
+    totalAcres += fujiAcres[i] + galaAcres[i] + pinkAcres[i] // Add the acres from each orchard that were harvested on day i to the total acres
+}
 
+console.log(totalAcres)
 
 
 // PROBLEM 2
@@ -69,9 +74,9 @@ const pinkPrice = .55
 
 // CODE HERE
 
+let averageDailyAcres = totalAcres / 7 // The average daily acers will be 1/7 of the total acres because there are 7 days in a week
 
-
-
+console.log(averageDailyAcres)
 
 // PROBLEM 3
 
@@ -107,7 +112,12 @@ let days = 0
 
 // CODE HERE
 
+while(acresLeft > 0){ // Loop until there are no acres left
+    acresLeft -= averageDailyAcres // Subtract the average daily acres from the acres left
+    days ++ // Add one day
+}
 
+console.log(days)
 
 // PROBLEM 4
 
@@ -135,14 +145,20 @@ let days = 0
 
 // CODE HERE
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+// Create empty arrays to be populated
+let fujiTons = []
+let galaTons = []
+let pinkTons = []
 
+for (i = 0; i < 7; i++){ // Loop through each day of the week
+    fujiTons[i] = fujiAcres[i] * 6.5 // populate the indexes in fujiTons with the values from fujiAcres multiplied by 6.5
+    galaTons[i] = galaAcres[i] * 6.5 // populate the indexes in galaTons with the values from galaAcres multiplied by 6.5
+    pinkTons[i] = pinkAcres[i] * 6.5 // populate the indexes in pinkTons with the values from pinkAcres multiplied by 6.5
+}
 
-
-
-
+console.log(fujiTons)
+console.log(galaTons)
+console.log(pinkTons)
 
 // PROBLEM 5
 
@@ -162,11 +178,20 @@ let days = 0
 
 // CODE HERE 
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
+// Create empty arrays to be populated
+let fujiPounds = []
+let galaPounds = []
+let pinkPounds = []
 
+for (i = 0; i < 7; i++){ // Loop through each day of the week
+    fujiPounds[i] = fujiTons[i] * 2000 // populate the indexes in fujiPounds with the values from fujiTons multiplied by 2000
+    galaPounds[i] = galaTons[i] * 2000 // populate the indexes in galaPounds with the values from galaTons multiplied by 2000
+    pinkPounds[i] = pinkTons[i] * 2000 // populate the indexes in pinkPounds with the values from pinkTons multiplied by 2000
+}
 
+console.log(fujiPounds)
+console.log(galaPounds)
+console.log(pinkPounds)
 
 
 
@@ -189,11 +214,19 @@ let days = 0
 
 // CODE HERE
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
+let fujiProfit = 0
+let galaProfit = 0
+let pinkProfit = 0
 
+for (i = 0; i < 7; i++){ // Loop through each day of the week. Find the the profit for each day's harvest of each apple type, and add it to the respective profit variable
+    fujiProfit += fujiPounds[i] * fujiPrice 
+    galaProfit += galaPounds[i] * galaPrice
+    pinkProfit += pinkPounds[i] * pinkPrice
+}
 
+console.log(fujiProfit)
+console.log(galaProfit)
+console.log(pinkProfit)
 
 
 
@@ -209,3 +242,7 @@ let days = 0
 */
 
 // CODE HERE
+
+let totalProfit = fujiProfit + galaProfit + pinkProfit // Add all the profits into totalProfit
+
+console.log(totalProfit)
